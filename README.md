@@ -4,85 +4,138 @@
     <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter" />
 </a>
 
-WOOD_BIOMASS — Анализ и обработка данных биомассы
+# WOOD_BIOMASS — Анализ и обработка данных древесной биомассы
+
 Описание
+
 Этот проект предназначен для анализа, обработки и хранения биотехнологических данных (биомасса, парсинг, работа с API и БД).
 
-Структура проекта
-text
+Модульный проект для организации биотехнологической обработки древесной биомассы. Реализует классический процесс ETL: загрузка, валидация, трансформация и импорт данных в базу данных.
+
+---
+
+## Структура проекта
+
+
 WOOD_BIOMASS/
+
 │
+
 ├─ API_and_parse/
+
 │   ├─ API_example/
+
 │   │   ├─ API_reader.py
+
 │   │   └─ README.md
+
 │   └─ parse_example/
+
 │       ├─ data_parser.py
+
 │       └─ README.md
+
 ├─ data/
+
 │   ├─ processed/
+
 │   │   ├─ .gitkeep
+
 │   │   └─ dataset_converted.parquet
+
 │   └─ raw/
+
 │       ├─ .gitkeep
+
 │       └─ downloaded_dataset.csv
+
 ├─ notebooks/
+
 │   ├─ .gitkeep
+
 │   ├─ EDA.ipynb
+
 │   └─ 00_project_overview.ipynb
+
 ├─ references/
+
 │   └─ .gitkeep
+
 ├─ reports/
+
 │   └─ figures/
+
 │       ├─ .gitkeep
+
 │       ├─ Downloading_the_df_on_provinces_into_the.png
+
 │       └─ Loading_dataset_example.png
+
 ├─ wood_biomass/
+
 │   ├─ __init__.py
+
 │   ├─ data_loader.py
+
 │   └─ write_to_db.py
+
 ├─ .env_example
+
 ├─ .gitignore
+
 ├─ Makefile
+
 ├─ README.md
+
 ├─ requirements.txt
+
 └─ setup.cfg
-Быстрый старт
-Создать виртуальное окружение (пример для Windows):
 
-text
-python -m venv venv
-venv\Scripts\activate
-Установить зависимости:
 
-text
-pip install -r requirements.txt
-Создать .env на основе шаблона:
+---
 
-text
-copy .env_example .env
-и заполнить нужные параметры.
+## Быстрый старт
 
-Запустить основные скрипты:
+1. **Клонирование репозитория и установка зависимостей:**
+    ```
+    git clone https://github.com/aclimova/Wood_biomass.git
+    cd Wood_biomass
+    pip install -r requirements.txt
+    ```
 
-Парсер данных:
+2. **Заполнение .env:**
+    - Скопируйте `.env.example` → `.env`, заполните ваши параметры PostgreSQL.
 
-text
-python API_and_parse/parse_example/data_parser.py
-Пример работы с API:
+3. **Запуск ETL:**
+    ```
+    python etl/main.py
+    ```
+    - После запуска: данные будут загружены, проверены, преобразованы и записаны в базу данных.
 
-text
-python API_and_parse/API_example/API_reader.py
-Загрузка данных:
+---
 
-text
-python wood_biomass/data_loader.py
-Запись в базу:
+## Основные модули
 
-text
-python wood_biomass/write_to_db.py
-Запустить Jupyter Notebook для анализа:
+- **extract.py**: Автоматическая загрузка исходного файла (например, из Google Drive) и сохранение его по пути `data/raw_ds/downloaded_dataset.csv`.
+- **validate.py**: Проверка на пустоту, обязательные поля, типы данных и дубликаты.
+- **transform.py**: Восстановление пропусков, перевод типов (str→category, float→numeric) и финальная подготовка набора.
+- **load.py**: Импорт в PostgreSQL, настройка подключения через переменные среды (в `.env`).
 
-text
-jupyter notebook notebooks/EDA.ipynb
+---
+
+## Автор, поддержка и лицензия
+
+Автор проекта: **aclimova**  
+Обратная связь: [GitHub Issues](https://github.com/aclimova/Wood_biomass/issues)  
+Лицензия: MIT
+
+---
+
+## Примечания
+
+- Все примеры переменных среды и команд даны для быстрой интеграции, детали — в комментариях к исходному коду.
+- По всем вопросам и предложениям обращайтесь через Issues на GitHub.
+
+---
+
 
