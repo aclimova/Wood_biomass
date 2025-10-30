@@ -16,54 +16,62 @@
 
 ## Структура проекта
 
-<pre> <code> WOOD_BIOMASS/ 
-    │ 
-    ├── .env files/ # Файлы переменных среды 
-    │ ├── .env # Основные переменные среды для БД 
-    │ └── example.env # Пример переменных (без данных) 
-    │ 
-    ├── API_and_parse/ # Работа с API и парсингом данных 
-    │ ├── API_example/ 
-    │ │ ├── API_reader.py # Скрипт для чтения данных через API 
-    │ │ └── README.md # Инструкция по API 
-    │ └── parse_example/ 
-    │ ├── data_parser.py # Скрипт для парсинга данных 
-    │ └── README.md # Инструкция по парсингу 
-    │ 
-    ├── data/ # Все рабочие (сырые, очищенные, преобразованные) данные 
-    │ ├── API_and_parse/ 
-    │ │ └── character_108.json # JSON с результатами парсинга 
-    │ ├── converted_ds/ 
-    │ │ └── dataset_converted.parquet # Готовый датасет 
-    │ └── raw_ds/ 
-    │ └── downloaded_dataset.csv # Сырые данные 
-    │ 
-    ├── etl/ # Главные ETL-скрипты 
-    │ ├── extract.py # Extract (выгрузка) 
-    │ ├── validate.py # Validate (валидация) 
-    │ ├── transform.py # Transform (преобразование)
-    │ ├── load.py # Load (загрузка в БД) 
-    │ └── main.py # Управляющий скрипт ETL 
-    │ 
-    ├── notebooks/ # Jupyter/EDA-ноутбуки 
-    │ ├── EDA.figures/ # Визуализации и графики для анализа 
-    │ │ ├── *.png # Картинки с результатами EDA 
-    │ ├── .gitkeep # Для хранения пустых папок в Git 
-    │ └── EDA.ipynb # Основной EDA-ноутбук 
-    │ 
-    ├── reports/ # Отчёты и презентационные материалы 
-    │ ├── figures/ 
-    │ │ ├── *.png # Картинки для отчётов 
-    │ │ └── .gitkeep 
-    │ └── .gitkeep 
-    │ 
-    ├── wood_biomass/ # Пакет проекта (если нужен импорт) 
-    │ └── __init__.py 
-    ├── .gitignore 
-    ├── Makefile 
-    ├── README.md 
-    ├── requirements.txt 
-    └── setup.cfg </code> </pre>
+<pre> <code> WOOD_BIOMASS/
+│
+├── .env files/
+│   ├── .env              # Основные переменные среды для работы с БД и API (не публикуется на GitHub)
+│   └── example.env       # Пример переменных для настройки, без личных данных
+│
+├── API_and_parse/        # Модуль для работы с внешними API, парсинга файлов и интеграций
+│   ├── API_example/
+│   │   ├── API_reader.py     # Скрипт для чтения данных через API (например, REST)
+│   │   └── README.md         # Описание конкретного API-примера
+│   └── parse_example/
+│       ├── data_parser.py    # Скрипт для парсинга/очистки данных из неструктурированных источников
+│       └── README.md         # Описание парсинга, инструкции
+│
+├── data/                  # Все рабочие данные проекта (чистые, преобразованные, исходные)
+│   ├── API_and_parse/
+│   │   └── character_108.json        # Вспомогательные JSON-данные из API/парсера
+│   ├── converted_ds/
+│   │   └── dataset_converted.parquet # Финальный преобразованный датасет для анализа
+│   └── raw_ds/
+│       └── downloaded_dataset.csv    # Сырые исходные данные (например, из Google Drive)
+│
+├── etl/                    # Главный ETL-процессинг: автоматизация всех этапов
+│   ├── extract.py          # Загрузка (Extract) сырых данных из внешних источников
+│   ├── validate.py         # Проверка (Validate) структуры, типов, пропусков
+│   ├── transform.py        # Преобразование (Transform): обработка, нормализация, подготовка
+│   ├── load.py             # Загрузка (Load) в базу данных (PostgreSQL)
+│   ├── main.py             # Управляющий сценарий, объединяющий все этапы ETL
+│
+├── notebooks/              # Jupyter/EDA-ноутбуки для исследовательского анализа, визуализации
+│   ├── EDA.figures/        # Готовые картинки для отчётов и презентаций
+│   │   ├── attribute density.png
+│   │   ├── boxplots.png
+│   │   ├── correlations btw numerical features.png
+│   │   ├── facetgrid.png
+│   │   ├── histogrammes.png
+│   │   ├── stripplot.png
+│   │   └── violin plot.png
+│   ├── .gitkeep            # Технический файл для хранения пустых папок в Git
+│   └── EDA.ipynb           # Основной ноутбук для разведочного анализа данных (EDA)
+│
+├── reports/                # Папка для отчётов, результатов, иллюстраций (например, для публикаций или презентаций)
+│   ├── figures/
+│   │   ├── .gitkeep
+│   │   ├── Downloading the df on provinces into the... # Примеры загрузки и визуализации
+│   │   └── Loading dataset example.png                # Иллюстрации работы ETL
+│   └── .gitkeep
+│
+├── wood_biomass/           # Основной пакет приложения (Python package)
+│   └── __init__.py         # Инициализация пакета для импорта функций на проекте
+│
+├── .gitignore              # Файл с перечнем игнорируемых для Git файлов/папок (.env, .pyc, data и т.д.)
+├── Makefile                # Автоматизация типовых задач (например, установка, запуск тестов, сборка), если используется
+├── README.md               # Описание проекта, инструкции по установке и запуску, ссылки
+├── requirements.txt        # Список всех используемых библиотек (pip install -r requirements.txt)
+└── setup.cfg               # Конфигурация для сборки, публикации, форматирования (можно использовать для PyPI) </code> </pre>
 
 
 
