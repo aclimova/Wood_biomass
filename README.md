@@ -16,7 +16,54 @@
 
 ## Структура проекта
 
-<pre> <code> WOOD_BIOMASS/ │ ├── .env files/ # Файлы переменных среды │ ├── .env # Основные переменные среды для БД │ └── example.env # Пример переменных (без данных) │ ├── API_and_parse/ # Работа с API и парсингом данных │ ├── API_example/ │ │ ├── API_reader.py # Скрипт для чтения данных через API │ │ └── README.md # Инструкция по API │ └── parse_example/ │ ├── data_parser.py # Скрипт для парсинга данных │ └── README.md # Инструкция по парсингу │ ├── data/ # Все рабочие (сырые, очищенные, преобразованные) данные │ ├── API_and_parse/ │ │ └── character_108.json # JSON с результатами парсинга │ ├── converted_ds/ │ │ └── dataset_converted.parquet # Готовый датасет │ └── raw_ds/ │ └── downloaded_dataset.csv # Сырые данные │ ├── etl/ # Главные ETL-скрипты │ ├── extract.py # Extract (выгрузка) │ ├── validate.py # Validate (валидация) │ ├── transform.py # Transform (преобразование) │ ├── load.py # Load (загрузка в БД) │ └── main.py # Управляющий скрипт ETL │ ├── notebooks/ # Jupyter/EDA-ноутбуки │ ├── EDA.figures/ # Визуализации и графики для анализа │ │ ├── *.png # Картинки с результатами EDA │ ├── .gitkeep # Для хранения пустых папок в Git │ └── EDA.ipynb # Основной EDA-ноутбук │ ├── reports/ # Отчёты и презентационные материалы │ ├── figures/ │ │ ├── *.png # Картинки для отчётов │ │ └── .gitkeep │ └── .gitkeep │ ├── wood_biomass/ # Пакет проекта (если нужен импорт) │ └── __init__.py ├── .gitignore ├── Makefile ├── README.md ├── requirements.txt └── setup.cfg </code> </pre>
+<pre> <code> WOOD_BIOMASS/ 
+    │ 
+    ├── .env files/ # Файлы переменных среды 
+    │ ├── .env # Основные переменные среды для БД 
+    │ └── example.env # Пример переменных (без данных) 
+    │ 
+    ├── API_and_parse/ # Работа с API и парсингом данных 
+    │ ├── API_example/ 
+    │ │ ├── API_reader.py # Скрипт для чтения данных через API 
+    │ │ └── README.md # Инструкция по API 
+    │ └── parse_example/ 
+    │ ├── data_parser.py # Скрипт для парсинга данных 
+    │ └── README.md # Инструкция по парсингу 
+    │ 
+    ├── data/ # Все рабочие (сырые, очищенные, преобразованные) данные 
+    │ ├── API_and_parse/ 
+    │ │ └── character_108.json # JSON с результатами парсинга 
+    │ ├── converted_ds/ 
+    │ │ └── dataset_converted.parquet # Готовый датасет 
+    │ └── raw_ds/ 
+    │ └── downloaded_dataset.csv # Сырые данные 
+    │ 
+    ├── etl/ # Главные ETL-скрипты 
+    │ ├── extract.py # Extract (выгрузка) 
+    │ ├── validate.py # Validate (валидация) 
+    │ ├── transform.py # Transform (преобразование)
+    │ ├── load.py # Load (загрузка в БД) 
+    │ └── main.py # Управляющий скрипт ETL 
+    │ 
+    ├── notebooks/ # Jupyter/EDA-ноутбуки 
+    │ ├── EDA.figures/ # Визуализации и графики для анализа 
+    │ │ ├── *.png # Картинки с результатами EDA 
+    │ ├── .gitkeep # Для хранения пустых папок в Git 
+    │ └── EDA.ipynb # Основной EDA-ноутбук 
+    │ 
+    ├── reports/ # Отчёты и презентационные материалы 
+    │ ├── figures/ 
+    │ │ ├── *.png # Картинки для отчётов 
+    │ │ └── .gitkeep 
+    │ └── .gitkeep 
+    │ 
+    ├── wood_biomass/ # Пакет проекта (если нужен импорт) 
+    │ └── __init__.py 
+    ├── .gitignore 
+    ├── Makefile 
+    ├── README.md 
+    ├── requirements.txt 
+    └── setup.cfg </code> </pre>
 
 
 
