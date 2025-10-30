@@ -24,7 +24,7 @@
 │
 ├── API_and_parse/        # Модуль для работы с внешними API, парсинга файлов и интеграций
 │   ├── API_example/
-│   │   ├── API_reader.py     # Скрипт для чтения данных через API (например, REST)
+│   │   ├── API_reader.py     # Скрипт для чтения данных через API 
 │   │   └── README.md         # Описание конкретного API-примера
 │   └── parse_example/
 │       ├── data_parser.py    # Скрипт для парсинга/очистки данных из неструктурированных источников
@@ -36,7 +36,7 @@
 │   ├── converted_ds/
 │   │   └── dataset_converted.parquet # Финальный преобразованный датасет для анализа
 │   └── raw_ds/
-│       └── downloaded_dataset.csv    # Сырые исходные данные (например, из Google Drive)
+│       └── downloaded_dataset.csv    # Сырые исходные данные (из Google Drive)
 │
 ├── etl/                    # Главный ETL-процессинг: автоматизация всех этапов
 │   ├── extract.py          # Загрузка (Extract) сырых данных из внешних источников
@@ -60,7 +60,7 @@
 ├── reports/                # Папка для отчётов, результатов, иллюстраций (например, для публикаций или презентаций)
 │   ├── figures/
 │   │   ├── .gitkeep
-│   │   ├── Downloading the df on provinces into the... # Примеры загрузки и визуализации
+│   │   ├── Downloading into the central db.png        # Примеры загрузки и визуализации
 │   │   └── Loading dataset example.png                # Иллюстрации работы ETL
 │   └── .gitkeep
 │
