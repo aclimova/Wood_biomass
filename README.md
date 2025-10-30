@@ -16,80 +16,119 @@
 
 ## Структура проекта
 
-
 WOOD_BIOMASS/
 
 │
 
-├─ API_and_parse/
+├── .env files/
 
-│   ├─ API_example/
+│   ├── .env................# Основные переменные среды для работы с БД (заполните своими данными)
 
-│   │   ├─ API_reader.py
+│   └── example.env.........# Пример переменных для настройки, без личных данных
 
-│   │   └─ README.md
+│
 
-│   └─ parse_example/
+├── API_and_parse/..........# Модуль для работы с внешними API, парсинга файлов и интеграций
 
-│       ├─ data_parser.py
+│   ├── API_example/
 
-│       └─ README.md
+│   │   ├── API_reader.py....# Скрипт для чтения данных через API 
 
-├─ data/
+│   │   └── README.md........# Описание конкретного API-примера
 
-│   ├─ processed/
+│   └── parse_example/
 
-│   │   ├─ .gitkeep
+│       ├── data_parser.py...# Скрипт для парсинга/очистки данных из неструктурированных источников
 
-│   │   └─ dataset_converted.parquet
+│       └── README.md........# Описание парсинга, инструкции
 
-│   └─ raw/
+│
 
-│       ├─ .gitkeep
+├── data/....................# Все рабочие данные проекта (чистые, преобразованные, исходные)
 
-│       └─ downloaded_dataset.csv
+│   ├── API_and_parse/
 
-├─ notebooks/
+│   │   └── character_108.json..# Вспомогательные JSON-данные из API/парсера
 
-│   ├─ .gitkeep
+│   ├── converted_ds/
 
-│   ├─ EDA.ipynb
+│   │   └── dataset_converted.parquet..# Финальный преобразованный датасет для анализа
 
-│   └─ 00_project_overview.ipynb
+│   └── raw_ds/
 
-├─ references/
+│       └── downloaded_dataset.csv.....# Сырые исходные данные (из Google Drive)
 
-│   └─ .gitkeep
+│
 
-├─ reports/
+├── etl/....................# Главный ETL-процессинг: автоматизация всех этапов
 
-│   └─ figures/
+│   ├── extract.py..........# Загрузка (Extract) сырых данных из внешних источников
 
-│       ├─ .gitkeep
+│   ├── validate.py.........# Проверка (Validate) структуры, типов, пропусков
 
-│       ├─ Downloading_the_df_on_provinces_into_the.png
+│   ├── transform.py........# Преобразование (Transform): обработка, нормализация, подготовка
 
-│       └─ Loading_dataset_example.png
+│   ├── load.py.............# Загрузка (Load) в базу данных (PostgreSQL)
 
-├─ wood_biomass/
+│   ├── main.py.............# Управляющий сценарий, объединяющий все этапы ETL
 
-│   ├─ __init__.py
+│
 
-│   ├─ data_loader.py
+├── notebooks/..............# Jupyter/EDA-ноутбуки для исследовательского анализа, визуализации
 
-│   └─ write_to_db.py
+│   ├── EDA.figures/........# Готовые картинки для отчётов и презентаций
 
-├─ .env_example
+│   │   ├── attribute density.png
 
-├─ .gitignore
+│   │   ├── boxplots.png
 
-├─ Makefile
+│   │   ├── correlations btw numerical features.png
 
-├─ README.md
+│   │   ├── facetgrid.png
 
-├─ requirements.txt
+│   │   ├── histogrammes.png
 
-└─ setup.cfg
+│   │   ├── stripplot.png
+
+│   │   └── violin plot.png
+
+│   ├── .gitkeep............# Технический файл для хранения пустых папок в Git
+
+│   └── EDA.ipynb...........# Основной ноутбук для разведочного анализа данных (EDA)
+
+│
+
+├── reports/............................................# Папка для отчётов, результатов, иллюстраций 
+
+│   ├── figures/
+
+│   │   ├── .gitkeep
+
+│   │   ├── Downloading the df on provinces into the...# Примеры загрузки и визуализации
+
+│   │   └── Loading dataset example.png................# Иллюстрации работы ETL
+
+│   └── .gitkeep
+
+│
+
+├── wood_biomass/............# Основной пакет приложения (Python package)
+
+│   └── __init__.py..........# Инициализация пакета для импорта функций на проекте
+
+│
+
+├── .gitignore..............# Файл с перечнем игнорируемых для Git файлов/папок (.env, .pyc, data и т.д.)
+
+├── Makefile................# Автоматизация типовых задач (например, установка, запуск тестов, сборка)
+
+├── README.md...............# Описание проекта, инструкции по установке и запуску, ссылки
+
+├── requirements.txt........# Список всех используемых библиотек (pip install -r requirements.txt)
+
+└── setup.cfg...............# Конфигурация для сборки, публикации, форматирования (можно использовать для PyPI)
+
+
 
 
 ---
@@ -122,6 +161,15 @@ WOOD_BIOMASS/
 - **load.py**: Импорт в PostgreSQL, настройка подключения через переменные среды (в `.env`).
 
 ---
+
+## Данные
+
+**Исходный деревесный датасет:**  
+[Biomass Data](https://drive.google.com/drive/folders/1TOftr_GOVv2wXgeg4S5GTd46YWDHC2Ls?usp=drive_link)
+
+[Расширенная и интерактивная визуализация EDA на nbviewer](https://nbviewer.org/github/aclimova/Klimova-75-63-project/blob/main/notebooks/EDA.ipynb?flush_cache=true)
+
+[Расширенная и интерактивная визуализация EDA на GoogleColab](https://colab.research.google.com/github/aclimova/Klimova-75-63-project/blob/main/notebooks/EDA.ipynb)
 
 ## Автор, поддержка и лицензия
 
