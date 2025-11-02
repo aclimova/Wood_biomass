@@ -21,3 +21,4 @@ plotly>=5.14
 ipywidgets>=7.6
 jupyterlab-widgets
 kaleido>=0.2
+argparse
